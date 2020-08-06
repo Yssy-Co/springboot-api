@@ -1,0 +1,19 @@
+<configuration>
+<appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>logs/app.log</file>
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+            <customFields>{"env":"yssy-demo"}</customFields>
+            <customFields>{"cloud_provider":"amazon"}</customFields>
+        </encoder>
+    </appender>
+    
+    
+       <!-- LOG everything at INFO level -->
+    <root level="info">
+        <appender-ref ref="FILE" />
+        
+    </root>
+ 
+   
+ 
+</configuration>

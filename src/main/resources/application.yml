@@ -1,0 +1,46 @@
+python:
+  url: http://34.75.77.77:8888/conferir-estoque
+---
+server:
+  port: 8888
+  contextPath: /
+---
+spring:
+  profiles: local, default
+datasource:
+  atsea:
+    url: jdbc:h2:~/test
+    username: yssy
+    password: yssy
+    driverClassName: org.h2.Driver
+    defaultSchema:
+    maxPoolSize: 10
+    hibernate:
+      hbm2ddl.method: create-drop
+      show_sql: true
+      format_sql: true
+      dialect: org.hibernate.dialect.H2Dialect
+---
+spring:
+  profiles: postgres
+datasource:
+  atsea:
+    url: jdbc:postgresql://localhost:5432/atsea
+    username: yssy
+    password: yssy
+    driverClassName: org.postgresql.Driver
+    defaultSchema:
+    maxConnections: 300
+    initialConnections: 20
+    maxAge: 30000
+    testOnBorrow: true
+    testWhileIdle:  true
+    timeBetweenEvictionRunsMillis: 60000
+    validationQuery: SELECT 1
+    minPoolSize: 6
+    maxPoolSize: 15
+    hibernate:
+      hbm2ddl.method: update
+      show_sql: true
+      format_sql: true
+      dialect: org.hibernate.dialect.PostgreSQLDialect
